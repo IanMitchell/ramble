@@ -1,11 +1,19 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  purge: ['./pages/**/*.js', './components/**/*.js'],
+  purge: ['./components/**/*.js', './layouts/**/*.js', './pages/**/*.js'],
   darkMode: 'media',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'light-blue': colors.lightBlue,
+        cyan: colors.cyan,
+        fuschia: colors.fuchsia,
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };
