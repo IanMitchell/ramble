@@ -17,9 +17,7 @@ export default function AdminLoginError() {
   }
 
   return (
-    <LoginLayout>
-      <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Error</h2>
-
+    <LoginLayout title="Error">
       {error && (
         <Alert type={AlertTypes.ERROR} message={error} className="mt-8" />
       )}

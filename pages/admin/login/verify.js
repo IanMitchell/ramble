@@ -14,10 +14,9 @@ export default function AdminLoginVerify() {
   });
 
   return (
-    <LoginLayout>
-      <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Email Sent</h2>
+    <LoginLayout title="Email sent">
       <div className="mt-8">
-        <p className="block text-sm font-medium text-gray-700">
+        <p className="block text-sm font-medium text-gray-700 dark:text-gray-300">
           A sign in link has been sent to your email address.
         </p>
       </div>

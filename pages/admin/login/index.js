@@ -23,9 +23,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <LoginLayout>
-      <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Sign in</h2>
-
+    <LoginLayout title="Sign in">
       {error && (
         <Alert type={AlertTypes.ERROR} message={error} className="mt-8" />
       )}
@@ -35,7 +33,7 @@ export default function AdminLogin() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Email address
             </label>
@@ -46,7 +44,7 @@ export default function AdminLogin() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
           </div>
