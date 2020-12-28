@@ -1,5 +1,5 @@
 import Grid from './Grid';
-import { GitHub } from '../icons';
+import GitHubIcon from '../icons/GitHub';
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         <aside className="col-span-3 ml-auto">
           <a href="https://github.com/ianmitchell/ramble">
-            <GitHub className="w-6 h-6" />
+            <GitHubIcon className="w-6 h-6" />
           </a>
         </aside>
       </Grid>
