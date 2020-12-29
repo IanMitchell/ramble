@@ -2,6 +2,7 @@ import useToggle from '../../hooks/useToggle';
 import Sidebar from '../components/sidebar/Sidebar';
 import SidebarGroup from '../components/sidebar/SidebarGroup';
 import SidebarLink from '../components/sidebar/SidebarLink';
+import PageHeader from '../components/page-header/PageHeader';
 import HomeIcon from '../../icons/Home';
 import MenuIcon from '../../icons/Menu';
 import ExternalLinkIcon from '../../icons/ExternalLink';
@@ -63,7 +64,7 @@ export default function Dashboard({ title, actions, active, children }) {
         >
           <div className="py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
+              <PageHeader actions={actions}>{title}</PageHeader>
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               <div className="py-4">{children}</div>

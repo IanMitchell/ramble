@@ -20,12 +20,16 @@ export default function SidebarLink({
     }
   );
 
-  const iconClasses = classnames('flex-shrink-0 -ml-1 mr-3', {
-    'text-gray-500 dark:text-gray-300': active,
-    'text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300': !active,
-    'h-4 w-4': !mobile,
-    'h-6 w-6': mobile,
-  });
+  const iconClasses = classnames(
+    'flex-shrink-0 -ml-1 mr-3',
+    icon.props.className,
+    {
+      'text-gray-500 dark:text-gray-300': active,
+      'text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300': !active,
+      'h-4 w-4': !mobile,
+      'h-6 w-6': mobile,
+    }
+  );
 
   const badgeClasses = classnames(
     'ml-auto inline-block py-0.5 px-3 text-xs rounded-full',
