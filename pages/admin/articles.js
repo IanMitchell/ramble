@@ -18,7 +18,7 @@ export default function AdminDashboard() {
       }
     >
       <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
-        <pre>{JSON.stringify(session)}</pre>
+        <pre>Todo!</pre>
       </div>
     </Dashboard>
   );

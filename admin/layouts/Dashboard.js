@@ -9,6 +9,7 @@ import ExternalLinkIcon from '../../icons/ExternalLink';
 import RichTextIcon from '../../icons/RichText';
 import PAGES from '../constants/pages';
 import usePostCount from '../../hooks/usePostCount';
+import AppHeader from '../components/app-header/AppHeader';
 
 export default function Dashboard({ title, actions, active, children }) {
   const { value: isMobileMenuShown, set: setIsMobileMenuShown } = useToggle(
@@ -49,15 +50,8 @@ export default function Dashboard({ title, actions, active, children }) {
       </Sidebar>
 
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
-        <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
-          <button
-            onClick={() => setIsMobileMenuShown(true)}
-            className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-          >
-            <span className="sr-only">Open sidebar</span>
-            <MenuIcon className="h-6 w-6" />
-          </button>
-        </div>
+        <AppHeader onMenuClick={() => setIsMobileMenuShown(true)} />
+
         <main
           className="flex-1 relative z-0 overflow-y-auto focus:outline-none"
           tabindex="0"

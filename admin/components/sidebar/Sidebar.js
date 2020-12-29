@@ -1,11 +1,11 @@
 import { Fragment, Children, cloneElement } from 'react';
 import { Transition } from '@headlessui/react';
 import Cross from '../../../icons/Cross';
-import useClickOutside from '../../../hooks/useClickOutside';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import SidebarAccount from './SidebarAccount';
 
 export default function Sidebar({ isOpen, onClose, children }) {
-  const clickRef = useClickOutside(() => {
+  const clickRef = useOnClickOutside(() => {
     if (isOpen) {
       onClose();
     }

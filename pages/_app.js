@@ -1,4 +1,5 @@
 import { Fragment, useEffect } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import * as Fathom from 'fathom-client';
 import { SWRConfig } from 'swr';
@@ -50,6 +51,9 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <Fragment>
+      <Head>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+      </Head>
       <SWRConfig value={{ fetcher }}>
         <Component {...pageProps} />
       </SWRConfig>

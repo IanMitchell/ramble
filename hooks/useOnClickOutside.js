@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-export default function useClickOutside(callback, escape = true) {
-  const ref = useRef();
+export default function useOnClickOutside(
+  callback,
+  escape = true,
+  inputRef = null
+) {
+  const ref = inputRef ?? useRef();
 
   // TODO: Check that this prevents unnecessary rerenders
   const callbackRef = useRef();
