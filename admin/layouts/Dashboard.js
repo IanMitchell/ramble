@@ -1,15 +1,19 @@
 import useToggle from '../../hooks/useToggle';
-import Home from '../../icons/Home';
-import Info from '../../icons/Info';
-import Menu from '../../icons/Menu';
 import Sidebar from '../components/sidebar/Sidebar';
 import SidebarGroup from '../components/sidebar/SidebarGroup';
 import SidebarLink from '../components/sidebar/SidebarLink';
+import HomeIcon from '../../icons/Home';
+import MenuIcon from '../../icons/Menu';
+import ExternalLinkIcon from '../../icons/ExternalLink';
+import RichTextIcon from '../../icons/RichText';
+import PAGES from '../constants/pages';
+import usePostCount from '../../hooks/usePostCount';
 
 export default function Dashboard({ title, actions, active, children }) {
   const { value: isMobileMenuShown, set: setIsMobileMenuShown } = useToggle(
     false
   );
+  const { postCount, isLoading: isPostCountLoading } = usePostCount();
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
@@ -18,23 +22,31 @@ export default function Dashboard({ title, actions, active, children }) {
         onClose={() => setIsMobileMenuShown(false)}
       >
         <SidebarGroup>
-          <SidebarLink href="/admin" icon={<Home />} active={true} count={3}>
+          <SidebarLink
+            href="/admin"
+            icon={<HomeIcon />}
+            active={active === PAGES.DASHBOARD}
+          >
             Dashboard
           </SidebarLink>
-          <SidebarLink href="/admin" icon={<Info />} active={false} count={13}>
-            Test Link
+
+          <SidebarLink href="/" icon={<ExternalLinkIcon />}>
+            Site
           </SidebarLink>
         </SidebarGroup>
 
         <SidebarGroup title="Articles">
-          <SidebarLink href="/admin" icon={<Home />} active={true} count={3}>
-            Dashboard
-          </SidebarLink>
-          <SidebarLink href="/admin" icon={<Info />} active={false} count={13}>
-            Test Link
+          <SidebarLink
+            href="/admin/articles"
+            icon={<RichTextIcon />}
+            active={active === PAGES.ARTICLES}
+            count={isPostCountLoading ? undefined : postCount.published}
+          >
+            All Articles
           </SidebarLink>
         </SidebarGroup>
       </Sidebar>
+
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
           <button
@@ -42,7 +54,7 @@ export default function Dashboard({ title, actions, active, children }) {
             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
           >
             <span className="sr-only">Open sidebar</span>
-            <Menu className="h-6 w-6" />
+            <MenuIcon className="h-6 w-6" />
           </button>
         </div>
         <main
