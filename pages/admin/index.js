@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+import Dashboard from '../../admin/layouts/Dashboard';
 import useAuth from '../../hooks/useAuth';
 
 export default function AdminDashboard() {
   const { session } = useAuth();
 
   return (
-    <Fragment>
-      <h1>Admin Dashboard</h1>
-      <pre>{JSON.stringify(session)}</pre>
-    </Fragment>
+    <Dashboard title="Dashboard">
+      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
+        <pre>{JSON.stringify(session)}</pre>
+      </div>
+    </Dashboard>
   );
 }
