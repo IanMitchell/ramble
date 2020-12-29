@@ -31,7 +31,7 @@ export default function AppHeader({ onMenuClick }) {
             className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span className="sr-only">Sponsor</span>
-            <HeartIcon className="h-6 w-6" />
+            <HeartIcon className="h-5 w-5" />
             <Modal
               isOpen={isSponsorModalShown}
               onClose={() => setIsSponsorModalShown(false)}
@@ -83,7 +83,7 @@ export default function AppHeader({ onMenuClick }) {
               className="ml-3 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="sr-only">Sponsor</span>
-              <LightbulbIcon className="h-6 w-6" />
+              <LightbulbIcon className="h-5 w-5" />
             </button>
           </FeedbackFish>
 

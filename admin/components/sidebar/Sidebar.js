@@ -2,7 +2,6 @@ import { Fragment, Children, cloneElement } from 'react';
 import { Transition } from '@headlessui/react';
 import Cross from '../../../icons/Cross';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import SidebarAccount from './SidebarAccount';
 
 export default function Sidebar({ isOpen, onClose, children }) {
   const clickRef = useOnClickOutside(() => {
@@ -71,7 +70,6 @@ export default function Sidebar({ isOpen, onClose, children }) {
                         )}
                       </nav>
                     </div>
-                    <SidebarAccount />
                   </div>
                   <div className="flex-shrink-0 w-14">
                     {/* <!-- Force sidebar to shrink to fit close icon --> */}
@@ -96,7 +94,6 @@ export default function Sidebar({ isOpen, onClose, children }) {
               </div>
               <nav className="flex-1 px-2">{children}</nav>
             </div>
-            <SidebarAccount />
           </div>
         </div>
       </div>
