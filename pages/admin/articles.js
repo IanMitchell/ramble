@@ -1,8 +1,17 @@
+import dynamic from 'next/dynamic';
 import Dashboard from '../../admin/layouts/Dashboard';
 import ButtonLink from '../../admin/components/buttons/ButtonLink';
 import useAuth from '../../hooks/useAuth';
 import PAGES from '../../admin/constants/pages';
 import PenIcon from '../../icons/Pen';
+import ErrorBoundary from '../../admin/components/ErrorBoundary';
+
+const ArticleContainer = dynamic(
+  () => import('../../admin/container/Articles'),
+  {
+    ssr: false,
+  }
+);
 
 export default function AdminDashboard() {
   const { session } = useAuth();
@@ -17,9 +26,9 @@ export default function AdminDashboard() {
         </ButtonLink>
       }
     >
-      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
-        <pre>Todo!</pre>
-      </div>
+      <ErrorBoundary fallback={<h1>Error!</h1>}>
+        <ArticleContainer />
+      </ErrorBoundary>
     </Dashboard>
   );
 }

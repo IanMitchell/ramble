@@ -5,6 +5,7 @@ import LightbulbIcon from '../../../icons/Lightbulb';
 import useToggle from '../../../hooks/useToggle';
 import Modal from '../modals/Modal';
 import { ButtonExternalLink } from '../buttons/ButtonLink';
+import Avatar, { AvatarSizes } from '../avatars/Avatar';
 
 export default function AppHeader({ onMenuClick }) {
   const { value: isSponsorModalShown, set: setIsSponsorModalShown } = useToggle(
@@ -32,47 +33,46 @@ export default function AppHeader({ onMenuClick }) {
           >
             <span className="sr-only">Sponsor</span>
             <HeartIcon className="h-5 w-5" />
-            <Modal
-              isOpen={isSponsorModalShown}
-              onClose={() => setIsSponsorModalShown(false)}
-            >
-              <div class="sm:flex sm:items-start">
-                <div>
-                  <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-                    <HeartIcon
-                      className="h-6 w-6 text-red-600"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div className="mt-3 text-center sm:mt-5">
-                    <h3
-                      className="text-lg leading-6 font-medium text-gray-900"
-                      id="modal-headline"
-                    >
-                      Sponsor Ramble
-                    </h3>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Please consider sponsoring my work! Sponsors get
-                        priority support when fixing bugs or considering new
-                        features.
-                      </p>
-                    </div>
+          </button>
+          <Modal
+            isOpen={isSponsorModalShown}
+            onClose={() => setIsSponsorModalShown(false)}
+          >
+            <div className="sm:flex sm:items-start">
+              <div>
+                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                  <HeartIcon
+                    className="h-6 w-6 text-red-600"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="mt-3 text-center sm:mt-5">
+                  <h3
+                    className="text-lg leading-6 font-medium text-gray-900"
+                    id="modal-headline"
+                  >
+                    Sponsor Ramble
+                  </h3>
+                  <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      Please consider sponsoring my work! Sponsors get priority
+                      support when fixing bugs or considering new features.
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="mt-5 sm:mt-6">
-                <ButtonExternalLink
-                  href="https://github.com/sponsors/IanMitchell"
-                  className="w-full justify-center"
-                  target="_blank"
-                  highlight
-                >
-                  Sponsor on GitHub
-                </ButtonExternalLink>
-              </div>
-            </Modal>
-          </button>
+            </div>
+            <div className="mt-5 sm:mt-6">
+              <ButtonExternalLink
+                href="https://github.com/sponsors/IanMitchell"
+                className="w-full justify-center"
+                target="_blank"
+                highlight
+              >
+                Sponsor on GitHub
+              </ButtonExternalLink>
+            </div>
+          </Modal>
 
           <FeedbackFish
             projectId="e98be972cfc300"
@@ -95,10 +95,9 @@ export default function AppHeader({ onMenuClick }) {
                 aria-haspopup="true"
               >
                 <span className="sr-only">Open user menu</span>
-                <img
-                  className="h-8 w-8 rounded-full"
+                <Avatar
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
+                  size={AvatarSizes.MEDIUM}
                 />
               </button>
             </div>

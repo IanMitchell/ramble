@@ -23,9 +23,9 @@ export default function Home({ posts }) {
             </Link>
           </h1>
           <p className="mt-3 text-base sm:text-xl lg:text-lg xl:text-xl">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua ad ad non deserunt sunt.
+            Ramble is a JAMstack IndieWeb publishing platform built on Next.js,
+            Prisma, and Tailwind. It's currently early in development, but we
+            hope to have a usable version soon!
           </p>
         </div>
       </Header>

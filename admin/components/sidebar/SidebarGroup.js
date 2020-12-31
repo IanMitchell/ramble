@@ -9,9 +9,7 @@ export default function SidebarGroup({ title, children, mobile }) {
         </h3>
       )}
       <div className="mt-1 space-y-1">
-        {Children.map(children, (child, i) =>
-          cloneElement(child, { mobile, key: i })
-        )}
+        {Children.map(children, (child) => cloneElement(child, { mobile }))}
       </div>
     </div>
   );

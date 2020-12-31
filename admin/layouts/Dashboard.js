@@ -54,7 +54,7 @@ export default function Dashboard({ title, actions, active, children }) {
 
         <main
           className="flex-1 relative z-0 overflow-y-auto focus:outline-none"
-          tabindex="0"
+          tabIndex="0"
         >
           <div className="py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
