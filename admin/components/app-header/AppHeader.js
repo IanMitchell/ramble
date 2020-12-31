@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/client';
 import { FeedbackFish } from '@feedback-fish/react';
 import MenuIcon from '../../../icons/Menu';
 import HeartIcon from '../../../icons/Heart';
@@ -8,6 +9,8 @@ import { ButtonExternalLink } from '../buttons/ButtonLink';
 import Avatar, { AvatarSizes } from '../avatars/Avatar';
 
 export default function AppHeader({ onMenuClick }) {
+  const [session] = useSession();
+
   const { value: isSponsorModalShown, set: setIsSponsorModalShown } = useToggle(
     false
   );
@@ -76,7 +79,7 @@ export default function AppHeader({ onMenuClick }) {
 
           <FeedbackFish
             projectId="e98be972cfc300"
-            userId="ian.mitchell@hey.com"
+            userId={session?.user?.email}
           >
             <button
               type="button"
