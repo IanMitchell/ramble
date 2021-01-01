@@ -9,16 +9,20 @@
     "db:migrate": "prisma migrate dev --preview-feature"
   },
   "dependencies": {
+    "@headlessui/react": "^0.2.0",
     "@prisma/client": "^2.13.1",
+    "@sendgrid/mail": "^7.4.0",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
     "classnames": "^2.2.6",
     "fathom-client": "^3.0.0",
     "next": "10.0.4",
+    "next-auth": "^3.1.0",
     "postcss": "^8.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "^6.13.1",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {

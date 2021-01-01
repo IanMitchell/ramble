@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 import Header from '../../components/Header';
-import { LeftArrow } from '../../icons';
+import LeftArrowIcon from '../../icons/LeftArrow';
 import Grid from '../../components/Grid';
 import Footer from '../../components/Footer';
 
@@ -12,7 +12,7 @@ export default function Post({ title, content }) {
       <Header>
         <Link href="/">
           <a className="inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white bg-opacity-25 bg-white hover:bg-opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2">
-            <LeftArrow className="w-4 h-4 mr-2" />
+            <LeftArrowIcon className="w-4 h-4 mr-2" />
             Home
           </a>
         </Link>
