@@ -13,7 +13,7 @@ export default function Sidebar({ isOpen, onClose, children }) {
   return (
     <Fragment>
       <Transition show={isOpen}>
-        <div className="md:hidden">
+        <aside className="md:hidden">
           <div className="fixed inset-0 flex z-40">
             <Transition.Child
               enter="transition-opacity ease-linear duration-300"
@@ -78,10 +78,10 @@ export default function Sidebar({ isOpen, onClose, children }) {
               )}
             </Transition.Child>
           </div>
-        </div>
+        </aside>
       </Transition>
 
-      <div className="hidden md:flex md:flex-shrink-0">
+      <aside className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex flex-col h-0 flex-1 border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-800">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -96,7 +96,7 @@ export default function Sidebar({ isOpen, onClose, children }) {
             </div>
           </div>
         </div>
-      </div>
+      </aside>
     </Fragment>
   );
 }
