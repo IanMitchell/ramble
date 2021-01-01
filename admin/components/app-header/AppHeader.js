@@ -1,4 +1,5 @@
-import { useSession } from 'next-auth/client';
+import { Fragment } from 'react';
+import { signOut, useSession } from 'next-auth/client';
 import { FeedbackFish } from '@feedback-fish/react';
 import MenuIcon from '../../../icons/Menu';
 import HeartIcon from '../../../icons/Heart';
@@ -7,6 +8,8 @@ import useToggle from '../../../hooks/useToggle';
 import Modal from '../modals/Modal';
 import { ButtonExternalLink } from '../buttons/ButtonLink';
 import Avatar, { AvatarSizes } from '../avatars/Avatar';
+import { Transition, Menu } from '@headlessui/react';
+import Badge from '../../../icons/Badge';
 
 export default function AppHeader({ onMenuClick }) {
   const [session] = useSession();
@@ -90,61 +93,69 @@ export default function AppHeader({ onMenuClick }) {
             </button>
           </FeedbackFish>
 
-          <div className="ml-3 relative">
-            <div>
-              <button
-                className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                id="user-menu"
-                aria-haspopup="true"
-              >
-                <span className="sr-only">Open user menu</span>
-                <Avatar
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  size={AvatarSizes.MEDIUM}
-                />
-              </button>
-            </div>
-            {/* <!--
-          Profile dropdown panel, show/hide based on dropdown state.
+          <Menu>
+            {({ open }) => (
+              <div className="ml-3 relative">
+                <div>
+                  <Menu.Button
+                    className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    aria-haspopup="true"
+                  >
+                    <span className="sr-only">Open user menu</span>
+                    <Avatar
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      size={AvatarSizes.MEDIUM}
+                    />
+                  </Menu.Button>
+                </div>
 
-          Entering: "transition ease-out duration-100"
-            From: "transform opacity-0 scale-95"
-            To: "transform opacity-100 scale-100"
-          Leaving: "transition ease-in duration-75"
-            From: "transform opacity-100 scale-100"
-            To: "transform opacity-0 scale-95"
-        --> */}
-            <div
-              className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="user-menu"
-            >
-              <a
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                role="menuitem"
-              >
-                Your Profile
-              </a>
+                <Transition
+                  show={open}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items static>
+                    <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
+                      <div className="px-4 py-3">
+                        <p className="text-sm">Signed in as</p>
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {session?.user?.email}
+                        </p>
+                      </div>
 
-              <a
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                role="menuitem"
-              >
-                Settings
-              </a>
-
-              <a
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                role="menuitem"
-              >
-                Sign out
-              </a>
-            </div>
-          </div>
+                      <div className="py-1">
+                        <Menu.Item as={Fragment}>
+                          <a
+                            href="#"
+                            className="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                          >
+                            <Badge className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" />
+                            My Account
+                          </a>
+                        </Menu.Item>
+                      </div>
+                      <div className="py-1">
+                        <Menu.Item as={Fragment}>
+                          <button
+                            onClick={signOut}
+                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                            role="menuitem"
+                          >
+                            Sign out
+                          </button>
+                        </Menu.Item>
+                      </div>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </div>
+            )}
+          </Menu>
         </div>
       </div>
     </div>
