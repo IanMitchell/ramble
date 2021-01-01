@@ -19,7 +19,7 @@ export default function AppHeader({ onMenuClick }) {
   );
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16">
+    <div className="relative z-10 flex-shrink-0 flex h-16 max-w-7xl sm:px-2 lg:px-4">
       <div className="md:hidden flex items-center">
         <button
           onClick={onMenuClick}

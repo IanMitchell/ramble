@@ -23,7 +23,7 @@ export default function Dashboard({ title, actions, active, children }) {
         isOpen={isMobileMenuShown}
         onClose={() => setIsMobileMenuShown(false)}
       >
-        <SidebarGroup>
+        <SidebarGroup className="mt-4">
           <SidebarLink
             href="/admin"
             icon={<HomeIcon />}
