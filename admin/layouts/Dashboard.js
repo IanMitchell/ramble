@@ -4,7 +4,6 @@ import SidebarGroup from '../components/sidebar/SidebarGroup';
 import SidebarLink from '../components/sidebar/SidebarLink';
 import PageHeader from '../components/page-header/PageHeader';
 import HomeIcon from '../../icons/Home';
-import MenuIcon from '../../icons/Menu';
 import ExternalLinkIcon from '../../icons/ExternalLink';
 import RichTextIcon from '../../icons/RichText';
 import PAGES from '../constants/pages';

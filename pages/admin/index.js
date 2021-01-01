@@ -8,7 +8,7 @@ export default function AdminDashboard() {
 
   return (
     <Dashboard title="Dashboard" active={PAGES.DASHBOARD}>
-      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
+      <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
         <pre>{JSON.stringify(session)}</pre>
       </div>
     </Dashboard>
