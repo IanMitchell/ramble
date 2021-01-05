@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import slug from '../../../lib/formatters/slug';
 import { unsupportedMethod } from '../../../lib/rest/methods';
 import serialize from '../../../lib/serializers/errors';
 
@@ -31,7 +32,7 @@ const create = async (request, response) => {
       data: {
         title: request.body.title,
         content: request.body.content,
-        slug: 'temp',
+        slug: slug(request.body.title),
         publishedAt: new Date(),
       },
       select: {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import MarkdownEditor from 'rich-markdown-editor';
 import Editor from '../../../admin/layouts/Editor';
 import useAutoResize from '../../ ../../../hooks/useAutoResize';
@@ -6,6 +7,7 @@ import debounce from '../../../lib/debounce';
 import ArticleStage from '../../../admin/constants/articles';
 
 export default function AdminNewPost() {
+  const router = useRouter();
   const [title, setTitle] = useState(null);
   const [content, setContent] = useState('');
   const titleRef = useAutoResize(title);
