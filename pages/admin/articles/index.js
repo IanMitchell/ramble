@@ -21,7 +21,7 @@ export default function AdminArticleList() {
       title="Articles"
       active={PAGES.ARTICLES}
       actions={
-        <ButtonLink href="/articles/new" icon={<PenIcon />} highlight>
+        <ButtonLink href="/admin/articles/new" icon={<PenIcon />} highlight>
           New Article
         </ButtonLink>
       }

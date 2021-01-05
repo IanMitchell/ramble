@@ -1,11 +1,22 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import Button from '../../admin/components/buttons/Button';
-import Badge from '../components/badges/Badge';
+import Badge, { BadgeTypes } from '../components/badges/Badge';
+import ArticleStage from '../constants/articles';
 import LeftArrowIcon from '../../icons/LeftArrow';
 import GearIcon from '../../icons/Gear';
 
-export default function EditorLayout({ children }) {
+function getBadge(stage) {
+  switch (stage) {
+    case ArticleStage.PUBLISHED:
+      return <Badge type={BadgeTypes.SUCCESS}>Published</Badge>;
+    case ArticleStage.DRAFT:
+    default:
+      return <Badge type={BadgeTypes.FAILURE}>Draft</Badge>;
+  }
+}
+
+export default function EditorLayout({ stage, onSave, children }) {
   return (
     <Fragment>
       <header className="relative">
@@ -19,24 +30,24 @@ export default function EditorLayout({ children }) {
                   </a>
                 </Link>
                 <div className="ml-6 pl-6 border-solid border-l-2 border-gray-100 py-2">
-                  <Badge>Draft</Badge>
+                  {getBadge(stage)}
                 </div>
               </div>
             </div>
             <div className="-mr-2 -my-2 flex items-center">
-              <span className="text-xs text-gray-400 pr-4">
+              {/* <span className="text-xs text-gray-400 pr-4">
                 Last Saved 10 minutes ago
-              </span>
-              <Button>Save</Button>
+              </span> */}
+              <Button onClick={onSave}>Save</Button>
             </div>
             <div className="-mr-2 -my-2">
-              <button
+              {/* <button
                 type="button"
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                 onClick={() => {}}
               >
                 <GearIcon className="w-6 h-6" />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
