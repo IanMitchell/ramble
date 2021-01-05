@@ -16,6 +16,16 @@ function getBadge(stage) {
   }
 }
 
+function getLabel(stage) {
+  switch (stage) {
+    case ArticleStage.PUBLISHED:
+      return 'Update';
+    case ArticleStage.DRAFT:
+    default:
+      return 'Publish';
+  }
+}
+
 export default function EditorLayout({ stage, onSave, children }) {
   return (
     <Fragment>
@@ -38,7 +48,7 @@ export default function EditorLayout({ stage, onSave, children }) {
               {/* <span className="text-xs text-gray-400 pr-4">
                 Last Saved 10 minutes ago
               </span> */}
-              <Button onClick={onSave}>Save</Button>
+              <Button onClick={onSave}>{getLabel(stage)}</Button>
             </div>
             <div className="-mr-2 -my-2">
               {/* <button
