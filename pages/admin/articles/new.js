@@ -12,11 +12,6 @@ export default function AdminNewPost() {
   const [content, setContent] = useState('');
   const titleRef = useAutoResize(title);
 
-  const onImageUpload = async (file) => {
-    console.log('Image Upload');
-    return Promise.resolve('https://ianmitchell.dev/ian.jpg');
-  };
-
   const onChange = debounce((value) => {
     setContent(value());
     console.log(content);
@@ -53,7 +48,6 @@ export default function AdminNewPost() {
         <main className="prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl">
           <MarkdownEditor
             placeholder="Begin writing your article..."
-            uploadImage={onImageUpload}
             onChange={onChange}
           />
         </main>

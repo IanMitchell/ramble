@@ -21,11 +21,6 @@ export default function AdminNewPost() {
     }
   }, [post]);
 
-  const onImageUpload = async (file) => {
-    console.log('Image Upload');
-    return Promise.resolve('https://ianmitchell.dev/ian.jpg');
-  };
-
   const onChange = debounce((value) => {
     setContent(value());
     console.log(content);
@@ -68,7 +63,6 @@ export default function AdminNewPost() {
               <MarkdownEditor
                 placeholder="Begin writing your article..."
                 defaultValue={post.content}
-                uploadImage={onImageUpload}
                 onChange={onChange}
               />
             </main>
