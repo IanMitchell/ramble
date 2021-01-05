@@ -1,15 +1,15 @@
-import { Fragment } from 'react';
-import Link from 'next/link';
-import { PrismaClient } from '@prisma/client';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Grid from '../components/Grid';
-import serializePosts from '../lib/serializers/post';
+import { Fragment } from "react";
+import Link from "next/link";
+import { PrismaClient } from "@prisma/client";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Grid from "../components/Grid";
+import serializePosts from "../lib/serializers/post";
 
 function formatDate(json) {
   const date = new Date(json);
 
-  return `${date.getMonth() + 1}/${date.getDate().toString().padEnd('0', 2)}`;
+  return `${date.getMonth() + 1}/${date.getDate().toString().padEnd("0", 2)}`;
 }
 
 export default function Home({ posts }) {
@@ -24,8 +24,8 @@ export default function Home({ posts }) {
           </h1>
           <p className="mt-3 text-base sm:text-xl lg:text-lg xl:text-xl">
             Ramble is a JAMstack IndieWeb publishing platform built on Next.js,
-            Prisma, and Tailwind. It's currently early in development, but we
-            hope to have a usable version soon!
+            Prisma, and Tailwind. It&apos;s currently early in development, but
+            we hope to have a usable version soon!
           </p>
         </div>
       </Header>
@@ -58,7 +58,7 @@ export async function getStaticProps() {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
     orderBy: {
-      publishedAt: 'desc',
+      publishedAt: "desc",
     },
   });
 

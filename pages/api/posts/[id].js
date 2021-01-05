@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { data } from 'autoprefixer';
-import { unsupportedMethod } from '../../../lib/rest/methods';
-import serialize from '../../../lib/serializers/errors';
+import { PrismaClient } from "@prisma/client";
+import { unsupportedMethod } from "../../../lib/rest/methods";
+import serialize from "../../../lib/serializers/errors";
 
 const read = async (request, response) => {
   try {
@@ -54,12 +53,12 @@ const update = async (request, response) => {
 
 export default (request, response) => {
   switch (request.method) {
-    case 'GET':
+    case "GET":
       return read(request, response);
-    case 'PATCH':
-    case 'PUT':
+    case "PATCH":
+    case "PUT":
       return update(request, response);
     default:
-      return unsupportedMethod(request, response, ['GET', 'POST']);
+      return unsupportedMethod(request, response, ["GET", "POST"]);
   }
 };

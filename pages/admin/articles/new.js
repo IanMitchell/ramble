@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import MarkdownEditor from 'rich-markdown-editor';
-import Editor from '../../../admin/layouts/Editor';
-import useAutoResize from '../../ ../../../hooks/useAutoResize';
-import debounce from '../../../lib/debounce';
-import ArticleStage from '../../../admin/constants/articles';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import MarkdownEditor from "rich-markdown-editor";
+import Editor from "../../../admin/layouts/Editor";
+import useAutoResize from "../../../hooks/useAutoResize";
+import debounce from "../../../lib/debounce";
+import ArticleStage from "../../../admin/constants/articles";
 
 export default function AdminNewPost() {
   const router = useRouter();
   const [title, setTitle] = useState(null);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const titleRef = useAutoResize(title);
 
   const onChange = debounce((value) => {
@@ -18,10 +18,10 @@ export default function AdminNewPost() {
   }, 250);
 
   const onSave = async () => {
-    await fetch('/api/posts', {
-      method: 'POST',
+    await fetch("/api/posts", {
+      method: "POST",
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
       body: JSON.stringify({
         title,
@@ -30,7 +30,7 @@ export default function AdminNewPost() {
     });
 
     // TODO: Replace with a notification
-    router.push('/admin/articles');
+    router.push("/admin/articles");
   };
 
   return (

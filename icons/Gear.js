@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 export default function Gear(props) {
   return (
     <svg

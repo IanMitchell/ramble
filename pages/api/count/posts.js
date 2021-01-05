@@ -1,12 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-import { unsupportedMethod } from '../../../lib/rest/methods';
-import serialize from '../../../lib/serializers/errors';
+import { PrismaClient } from "@prisma/client";
+import { unsupportedMethod } from "../../../lib/rest/methods";
+import serialize from "../../../lib/serializers/errors";
 
 const read = async (request, response) => {
   try {
     const prisma = new PrismaClient();
-    const posts = await prisma.post.findMany();
-
     const [published] = await Promise.all([prisma.post.count()]);
 
     return response.status(200).json({ postCount: { published } });
@@ -17,9 +15,9 @@ const read = async (request, response) => {
 
 export default (request, response) => {
   switch (request.method) {
-    case 'GET':
+    case "GET":
       return read(request, response);
     default:
-      return unsupportedMethod(request, response, ['GET']);
+      return unsupportedMethod(request, response, ["GET"]);
   }
 };

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 export default class ErrorBoundary extends Component {
   constructor(props) {
@@ -18,10 +18,13 @@ export default class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.error) {
-      return this.props.fallback(this.state.error);
+    const { error } = this.state;
+    const { children, fallback } = this.props;
+
+    if (error) {
+      return fallback(error);
     }
 
-    return this.props.children;
+    return children;
   }
 }

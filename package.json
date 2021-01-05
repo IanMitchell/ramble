@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint . --ext .js --ignore-path .gitignore",
     "db:migrate": "prisma migrate dev --preview-feature"
   },
   "dependencies": {
@@ -30,6 +31,15 @@
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.13.1"
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@prisma/cli": "^2.13.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   }
 }

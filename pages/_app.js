@@ -1,23 +1,25 @@
-import { Fragment, useEffect } from 'react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import * as Fathom from 'fathom-client';
-import { SWRConfig } from 'swr';
-import 'tailwindcss/tailwind.css';
+/* eslint-disable react/jsx-props-no-spreading */
+
+import { Fragment, useEffect } from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import * as Fathom from "fathom-client";
+import { SWRConfig } from "swr";
+import "tailwindcss/tailwind.css";
 
 async function fetcher(...args) {
   const response = await fetch(...args);
   const data = await response.json();
 
   if (!response.ok) {
-    const error = new Error('Error Fetching Data');
+    const error = new Error("Error Fetching Data");
     error.status = response.status;
 
     if (data?.errors?.length === 1) {
       error.name = data.errors[0].name;
       error.message = data.errors[0].message;
     } else {
-      error.name = 'Encountered Errors';
+      error.name = "Encountered Errors";
       error.entries = data.errors;
     }
 
@@ -32,22 +34,22 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     // Initialize Fathom when the app loads
-    Fathom.load('FZCFZQRR', {
-      includedDomains: ['ramble.pub'],
-      url: 'https://wildcat.ramble.pub/script.js',
+    Fathom.load("FZCFZQRR", {
+      includedDomains: ["ramble.pub"],
+      url: "https://wildcat.ramble.pub/script.js",
     });
 
     function onRouteChangeComplete() {
       Fathom.trackPageview();
     }
     // Record a pageview when route changes
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
 
     // Unassign event listener
     return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete);
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
     };
-  }, []);
+  }, [router.events]);
 
   return (
     <Fragment>

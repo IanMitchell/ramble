@@ -1,17 +1,13 @@
-import { forwardRef } from 'react';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import CrossIcon from '../../../icons/Cross';
+import { forwardRef } from "react";
+import { useOnClickOutsideWithRef } from "../../../hooks/useOnClickOutside";
+import CrossIcon from "../../../icons/Cross";
 
 export default forwardRef(({ isOpen, onClose, children }, ref) => {
-  useOnClickOutside(
-    () => {
-      if (isOpen) {
-        onClose();
-      }
-    },
-    true,
-    ref
-  );
+  useOnClickOutsideWithRef(ref, () => {
+    if (isOpen) {
+      onClose();
+    }
+  });
 
   return (
     <div

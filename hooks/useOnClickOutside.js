@@ -1,12 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-export default function useOnClickOutside(
-  callback,
-  escape = true,
-  inputRef = null
-) {
-  const ref = inputRef ?? useRef();
-
+export function useOnClickOutsideWithRef(ref, callback, escape = true) {
   // TODO: Check that this prevents unnecessary rerenders
   const callbackRef = useRef();
   callbackRef.current = callback;
@@ -19,19 +13,24 @@ export default function useOnClickOutside(
     };
 
     const onPress = (event) => {
-      if (escape && event.key === 'Escape') {
+      if (escape && event.key === "Escape") {
         callbackRef.current(event);
       }
     };
 
-    document.addEventListener('click', onClick);
-    document.addEventListener('keypress', onPress);
+    document.addEventListener("click", onClick);
+    document.addEventListener("keypress", onPress);
 
     return () => {
-      document.removeEventListener('click', onClick);
-      document.removeEventListener('keypress', onPress);
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keypress", onPress);
     };
   }, [ref, callbackRef, escape]);
+}
+
+export default function useOnClickOutside(callback, escape = true) {
+  const ref = useRef();
+  useOnClickOutsideWithRef(ref, callback, escape);
 
   return ref;
 }

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 export default function Menu(props) {
   return (
     <svg

@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import MarkdownEditor from 'rich-markdown-editor';
-import Editor from '../../../../admin/layouts/Editor';
-import Spinner from '../../../../admin/components/Spinner';
-import useAutoResize from '../../ ../../../../hooks/useAutoResize';
-import debounce from '../../../../lib/debounce';
-import usePost from '../../../../hooks/usePost';
-import ArticleStage from '../../../../admin/constants/articles';
+import { Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import MarkdownEditor from "rich-markdown-editor";
+import Editor from "../../../../admin/layouts/Editor";
+import Spinner from "../../../../admin/components/Spinner";
+import useAutoResize from "../../../../hooks/useAutoResize";
+import debounce from "../../../../lib/debounce";
+import usePost from "../../../../hooks/usePost";
+import ArticleStage from "../../../../admin/constants/articles";
 
 export default function AdminNewPost() {
   const router = useRouter();
@@ -28,9 +28,9 @@ export default function AdminNewPost() {
 
   const onSave = async () => {
     await fetch(`/api/posts/${router.query.id}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
       body: JSON.stringify({
         title,
@@ -40,7 +40,7 @@ export default function AdminNewPost() {
 
     mutate({ ...post, title, content });
     // TODO: Replace with a notification
-    router.push('/admin/articles');
+    router.push("/admin/articles");
   };
 
   return (

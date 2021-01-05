@@ -1,7 +1,6 @@
-import { useRouter } from 'next/router';
-import Dashboard from '../../admin/layouts/Dashboard';
-import useAuth from '../../hooks/useAuth';
-import PAGES from '../../admin/constants/pages';
+import Dashboard from "../../admin/layouts/Dashboard";
+import useAuth from "../../hooks/useAuth";
+import PAGES from "../../admin/constants/pages";
 
 export default function AdminDashboard() {
   const { session } = useAuth();

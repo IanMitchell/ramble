@@ -1,15 +1,15 @@
-import { Fragment } from 'react';
-import { signOut, useSession } from 'next-auth/client';
-import { FeedbackFish } from '@feedback-fish/react';
-import MenuIcon from '../../../icons/Menu';
-import HeartIcon from '../../../icons/Heart';
-import LightbulbIcon from '../../../icons/Lightbulb';
-import useToggle from '../../../hooks/useToggle';
-import Modal from '../modals/Modal';
-import { ButtonExternalLink } from '../buttons/ButtonLink';
-import Avatar, { AvatarSizes } from '../avatars/Avatar';
-import { Transition, Menu } from '@headlessui/react';
-import Badge from '../../../icons/Badge';
+import { Fragment } from "react";
+import { signOut, useSession } from "next-auth/client";
+import { FeedbackFish } from "@feedback-fish/react";
+import { Transition, Menu } from "@headlessui/react";
+import MenuIcon from "../../../icons/Menu";
+import HeartIcon from "../../../icons/Heart";
+import LightbulbIcon from "../../../icons/Lightbulb";
+import useToggle from "../../../hooks/useToggle";
+import Modal from "../modals/Modal";
+import { ButtonExternalLink } from "../buttons/ButtonLink";
+import Avatar, { AvatarSizes } from "../avatars/Avatar";
+import Badge from "../../../icons/Badge";
 
 export default function AppHeader({ onMenuClick }) {
   const [session] = useSession();

@@ -1,9 +1,9 @@
-import classnames from 'classnames';
+import classnames from "classnames";
 
 export const AvatarSizes = {
-  SMALL: 'h-6 w-6',
-  MEDIUM: 'h-8 w-8',
-  LARGE: 'h-12 w-12',
+  SMALL: "h-6 w-6",
+  MEDIUM: "h-8 w-8",
+  LARGE: "h-12 w-12",
 };
 
 export default function Avatar({
@@ -14,11 +14,11 @@ export default function Avatar({
   size = AvatarSizes.MEDIUM,
   className,
 }) {
-  const classes = classnames('rounded-full', size, className);
+  const classes = classnames("rounded-full", size, className);
 
   if (!src && !placeholder) {
     return (
-      <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+      <span className="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
         <svg
           className="h-full w-full text-gray-300"
           fill="currentColor"
