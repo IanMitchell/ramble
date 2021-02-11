@@ -8,7 +8,7 @@ import useNotification from "../../../../hooks/useNotification";
 import debounce from "../../../../lib/debounce";
 import usePost from "../../../../hooks/usePost";
 import ArticleStage from "../../../../admin/constants/articles";
-import CheckCircle from "../../../../icons/CheckCircle";
+import CheckCircleIcon from "../../../../icons/CheckCircle";
 
 export default function AdminNewPost() {
   const router = useRouter();
@@ -42,10 +42,9 @@ export default function AdminNewPost() {
     });
 
     mutate({ ...post, title, content });
-    // TODO: Replace with a notification
     router.push("/admin/articles");
     notify({
-      icon: <CheckCircle className="text-green-400" />,
+      icon: <CheckCircleIcon className="text-green-400" />,
       title: "Post Updated!",
       content: `Your post "${title}" has been updated.`,
     });
