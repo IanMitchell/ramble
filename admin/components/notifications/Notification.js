@@ -15,7 +15,6 @@ export default function Notification({
 
   const close = () => {
     setIsOpen(false);
-    setTimeout(onClose, 3000);
   };
 
   if (timeout) {
@@ -29,14 +28,15 @@ export default function Notification({
       enter="transform ease-out duration-300 transition"
       enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
       enterTo="translate-y-0 opacity-100 sm:translate-x-0"
-      leave="transition ease-in duration-100 max-h-24"
+      leave="transition ease-in duration-100"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
+      afterLeave={onClose}
     >
       {(ref) => (
         <div
           ref={ref}
-          className="w-full max-w-sm bg-white rounded-lg shadow-lg pointer-events-auto overflow-hidden ring-black ring-opacity-5 ring-1"
+          className="mb-2 w-full max-w-sm bg-white rounded-lg shadow-lg pointer-events-auto overflow-hidden ring-black ring-opacity-5 ring-1"
         >
           <div className="p-4">
             <div className="flex items-start">
