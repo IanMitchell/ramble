@@ -10,7 +10,7 @@ import usePost from "../../../../hooks/usePost";
 import ArticleStage from "../../../../admin/constants/articles";
 import CheckCircleIcon from "../../../../icons/CheckCircle";
 
-export default function AdminNewPost() {
+export default function AdminEditPost() {
   const router = useRouter();
   const { post, isLoading, mutate } = usePost(router.query.id);
   const [title, setTitle] = useState();
