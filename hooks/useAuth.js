@@ -10,10 +10,11 @@ export default function useAuth(
   const [session, loading] = useSession();
 
   useEffect(() => {
+    debugger;
     if (redirect && !loading && !session) {
       router.push(redirectPath);
     }
-  }, [router, session]);
+  }, [redirect, loading, session, router, redirectPath]);
 
   return { session, loading };
 }

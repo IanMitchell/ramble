@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma migrate dev --preview-feature && next build",
+    "build": "next build",
     "start": "next start",
+    "lint": "eslint . --ext .js --ignore-path .gitignore",
     "db:migrate": "prisma migrate dev --preview-feature"
   },
   "dependencies": {
+    "@feedback-fish/react": "^1.2.1",
     "@headlessui/react": "^0.2.0",
     "@prisma/client": "^2.13.1",
     "@sendgrid/mail": "^7.4.0",
@@ -20,12 +22,26 @@
     "next": "10.0.4",
     "next-auth": "^3.1.0",
     "postcss": "^8.2.1",
+    "prettier-plugin-tailwind": "^2.2.8",
     "react": "17.0.1",
+    "react-diff-viewer": "^3.1.1",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.13.1",
+    "rich-markdown-editor": "^11.0.11",
+    "styled-components": "^5.2.1",
+    "swr": "^0.3.11",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.13.1"
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@prisma/cli": "^2.13.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   }
 }

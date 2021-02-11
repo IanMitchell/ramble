@@ -33,6 +33,18 @@ const options = {
     verifyRequest: '/admin/login/verify',
   },
   adapter: Adapters.Prisma.Adapter({ prisma }),
+  callbacks: {
+    signIn: async (user, account, profile) => {
+      console.log(user);
+      console.log(account);
+      console.log(profile);
+      if (user.email === 'ian.mitchell@hey.com') {
+        return Promise.resolve(true);
+      }
+
+      return Promise.resolve(false);
+    },
+  },
 };
 
 export default (req, res) => NextAuth(req, res, options);
