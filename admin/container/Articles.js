@@ -1,37 +1,37 @@
-import { Suspense } from 'react';
-import Link from 'next/link';
-import Calendar from '../../icons/Calendar';
-import ChevronRight from '../../icons/ChevronRight';
-import Avatar, { AvatarSizes } from '../components/avatars/Avatar';
-import AvatarList from '../components/avatars/AvatarList';
-import Spinner from '../components/Spinner';
-import usePosts from '../../hooks/usePosts';
-import formatDate from '../../lib/formatters/date';
+import { Suspense } from "react";
+import Link from "next/link";
+import Calendar from "../../icons/Calendar";
+import ChevronRight from "../../icons/ChevronRight";
+import Avatar, { AvatarSizes } from "../components/avatars/Avatar";
+import AvatarList from "../components/avatars/AvatarList";
+import Spinner from "../components/Spinner";
+import usePosts from "../../hooks/usePosts";
+import formatDate from "../../lib/formatters/date";
 
 function ArticleList() {
   const { posts } = usePosts();
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-md">
-      <ul className="divide-y divide-gray-200">
+      <ul className="divide-gray-200 divide-y">
         {posts.map((post) => (
           <li key={post.slug}>
             <Link href={`/admin/articles/edit/${post.id}`}>
               <a className="block hover:bg-gray-50">
-                <div className="px-4 py-4 flex items-center sm:px-6">
-                  <div className="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+                <div className="flex items-center px-4 py-4 sm:px-6">
+                  <div className="flex-1 min-w-0 sm:flex sm:items-center sm:justify-between">
                     <div>
-                      <div className="flex text-sm font-medium text-indigo-600 truncate">
+                      <div className="flex text-indigo-600 text-sm font-medium truncate">
                         <p>{post.title}</p>
                         {/* <p className="ml-1 font-normal text-gray-500">
                         in Engineering, Tag, and List
                       </p> */}
                       </div>
-                      <div className="mt-2 flex">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Calendar className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
+                      <div className="flex mt-2">
+                        <div className="flex items-center text-gray-500 text-sm">
+                          <Calendar className="flex-shrink-0 mr-1.5 w-4 h-4 text-gray-400" />
                           <p>
-                            Published{' '}
+                            Published{" "}
                             <time dateTime={post.publishedAt}>
                               {formatDate(post.publishedAt)}
                             </time>
@@ -48,8 +48,8 @@ function ArticleList() {
                     </AvatarList>
                   </div> */}
                   </div>
-                  <div className="ml-5 flex-shrink-0">
-                    <ChevronRight className="h-5 w-5 text-gray-400" />
+                  <div className="flex-shrink-0 ml-5">
+                    <ChevronRight className="w-5 h-5 text-gray-400" />
                   </div>
                 </div>
               </a>

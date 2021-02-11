@@ -4,9 +4,11 @@ import MarkdownEditor from "rich-markdown-editor";
 import Editor from "../../../../admin/layouts/Editor";
 import Spinner from "../../../../admin/components/Spinner";
 import useAutoResize from "../../../../hooks/useAutoResize";
+import useNotification from "../../../../hooks/useNotification";
 import debounce from "../../../../lib/debounce";
 import usePost from "../../../../hooks/usePost";
 import ArticleStage from "../../../../admin/constants/articles";
+import CheckCircle from "../../../../icons/CheckCircle";
 
 export default function AdminNewPost() {
   const router = useRouter();
@@ -14,6 +16,7 @@ export default function AdminNewPost() {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const titleRef = useAutoResize(title);
+  const notify = useNotification();
 
   useEffect(() => {
     if (post) {
@@ -41,11 +44,16 @@ export default function AdminNewPost() {
     mutate({ ...post, title, content });
     // TODO: Replace with a notification
     router.push("/admin/articles");
+    notify({
+      icon: <CheckCircle className="text-green-400" />,
+      title: "Post Updated!",
+      content: `Your post "${title}" has been updated.`,
+    });
   };
 
   return (
     <Editor stage={ArticleStage.PUBLISHED} onSave={onSave}>
-      <section className="max-w-screen-sm m-auto mt-12">
+      <section className="m-auto mt-12 max-w-screen-sm">
         {isLoading || !post ? (
           <Spinner center />
         ) : (
@@ -56,10 +64,10 @@ export default function AdminNewPost() {
                 placeholder="Post Title"
                 onChange={(event) => setTitle(event.target.value)}
                 value={title}
-                className="block w-full text-6xl leading-tight resize-none border-none outline-none shadow-none font-bold overflow-hidden h-28 mb-12"
+                className="block mb-12 w-full h-28 text-6xl font-bold leading-tight border-none outline-none shadow-none overflow-hidden resize-none"
               />
             </header>
-            <main className="prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl">
+            <main className="prose 2xl:prose-2xl sm:prose-sm lg:prose-lg xl:prose-xl">
               <MarkdownEditor
                 placeholder="Begin writing your article..."
                 defaultValue={post.content}

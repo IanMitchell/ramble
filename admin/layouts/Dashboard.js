@@ -1,14 +1,14 @@
-import useToggle from '../../hooks/useToggle';
-import Sidebar from '../components/sidebar/Sidebar';
-import SidebarGroup from '../components/sidebar/SidebarGroup';
-import SidebarLink from '../components/sidebar/SidebarLink';
-import PageHeader from '../components/page-header/PageHeader';
-import HomeIcon from '../../icons/Home';
-import ExternalLinkIcon from '../../icons/ExternalLink';
-import RichTextIcon from '../../icons/RichText';
-import PAGES from '../constants/pages';
-import usePostCount from '../../hooks/usePostCount';
-import AppHeader from '../components/app-header/AppHeader';
+import useToggle from "../../hooks/useToggle";
+import Sidebar from "../components/sidebar/Sidebar";
+import SidebarGroup from "../components/sidebar/SidebarGroup";
+import SidebarLink from "../components/sidebar/SidebarLink";
+import PageHeader from "../components/page-header/PageHeader";
+import HomeIcon from "../../icons/Home";
+import ExternalLinkIcon from "../../icons/ExternalLink";
+import RichTextIcon from "../../icons/RichText";
+import PAGES from "../constants/pages";
+import usePostCount from "../../hooks/usePostCount";
+import AppHeader from "../components/app-header/AppHeader";
 
 export default function Dashboard({ title, actions, active, children }) {
   const { value: isMobileMenuShown, set: setIsMobileMenuShown } = useToggle(
@@ -17,7 +17,7 @@ export default function Dashboard({ title, actions, active, children }) {
   const { postCount, isLoading: isPostCountLoading } = usePostCount();
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
+    <div className="flex h-screen bg-gray-100 overflow-hidden">
       <Sidebar
         isOpen={isMobileMenuShown}
         onClose={() => setIsMobileMenuShown(false)}
@@ -48,18 +48,18 @@ export default function Dashboard({ title, actions, active, children }) {
         </SidebarGroup>
       </Sidebar>
 
-      <div className="flex flex-col w-0 flex-1 overflow-hidden">
+      <div className="flex flex-1 flex-col w-0 overflow-hidden">
         <AppHeader onMenuClick={() => setIsMobileMenuShown(true)} />
 
         <main
-          className="flex-1 relative z-0 overflow-y-auto focus:outline-none"
+          className="relative z-0 flex-1 focus:outline-none overflow-y-auto"
           tabIndex="0"
         >
           <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
               <PageHeader actions={actions}>{title}</PageHeader>
             </div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="mx-auto px-4 max-w-7xl sm:px-6 md:px-8">
               <div className="py-4">{children}</div>
             </div>
           </div>

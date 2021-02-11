@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Fragment, useEffect } from "react";
+import { Provider as AuthProvider } from "next-auth/client";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import * as Fathom from "fathom-client";
 import { SWRConfig } from "swr";
+import NotificationsContainer from "../admin/components/notifications/NotificationsContainer";
 import "tailwindcss/tailwind.css";
 
 async function fetcher(...args) {
@@ -27,6 +29,22 @@ async function fetcher(...args) {
   }
 
   return data;
+}
+
+function AdminConditionalWrapper({ pageProps, children }) {
+  const router = useRouter();
+
+  if (router.pathname.startsWith("/admin")) {
+    return (
+      <AuthProvider session={pageProps.session}>
+        <NotificationsContainer>
+          <SWRConfig value={{ fetcher }}>{children}</SWRConfig>
+        </NotificationsContainer>
+      </AuthProvider>
+    );
+  }
+
+  return children;
 }
 
 export default function MyApp({ Component, pageProps }) {
@@ -56,9 +74,9 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
-      <SWRConfig value={{ fetcher }}>
+      <AdminConditionalWrapper pageProps={pageProps}>
         <Component {...pageProps} />
-      </SWRConfig>
+      </AdminConditionalWrapper>
     </Fragment>
   );
 }
