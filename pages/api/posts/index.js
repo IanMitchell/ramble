@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client';
-import slug from '../../../lib/formatters/slug';
-import { unsupportedMethod } from '../../../lib/rest/methods';
-import serialize from '../../../lib/serializers/errors';
+import { PrismaClient } from "@prisma/client";
+import nextConnect from "next-connect";
+import slug from "../../../lib/formatters/slug";
+import serialize from "../../../lib/serializers/errors";
 
 const read = async (request, response) => {
   try {
@@ -14,7 +14,7 @@ const read = async (request, response) => {
         publishedAt: true,
       },
       orderBy: {
-        publishedAt: 'desc',
+        publishedAt: "desc",
       },
     });
 
@@ -50,13 +50,4 @@ const create = async (request, response) => {
   }
 };
 
-export default (request, response) => {
-  switch (request.method) {
-    case 'GET':
-      return read(request, response);
-    case 'POST':
-      return create(request, response);
-    default:
-      return unsupportedMethod(request, response, ['GET', 'POST']);
-  }
-};
+export default nextConnect().get(read).post(create);

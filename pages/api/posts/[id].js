@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { unsupportedMethod } from "../../../lib/rest/methods";
+import nextConnect from "next-connect";
 import serialize from "../../../lib/serializers/errors";
 
 const read = async (request, response) => {
@@ -51,14 +51,4 @@ const update = async (request, response) => {
   }
 };
 
-export default (request, response) => {
-  switch (request.method) {
-    case "GET":
-      return read(request, response);
-    case "PATCH":
-    case "PUT":
-      return update(request, response);
-    default:
-      return unsupportedMethod(request, response, ["GET", "POST"]);
-  }
-};
+export default nextConnect().get(read).patch(update).put(update);

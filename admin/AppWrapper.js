@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
-import { Provider as AuthProvider } from "next-auth/client";
 import NotificationsContainer from "./components/notifications/NotificationsContainer";
 
 async function fetcher(...args) {
@@ -30,11 +29,9 @@ export default function AdminConditionalWrapper({ pageProps, children }) {
 
   if (router.pathname.startsWith("/admin")) {
     return (
-      <AuthProvider session={pageProps.session}>
-        <NotificationsContainer>
-          <SWRConfig value={{ fetcher }}>{children}</SWRConfig>
-        </NotificationsContainer>
-      </AuthProvider>
+      <NotificationsContainer>
+        <SWRConfig value={{ fetcher }}>{children}</SWRConfig>
+      </NotificationsContainer>
     );
   }
 

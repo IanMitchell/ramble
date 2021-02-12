@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { signOut, useSession } from "next-auth/client";
 import { FeedbackFish } from "@feedback-fish/react";
 import { Transition, Menu } from "@headlessui/react";
 import MenuIcon from "../../../icons/Menu";
@@ -12,33 +11,33 @@ import Avatar, { AvatarSizes } from "../avatars/Avatar";
 import Badge from "../../../icons/Badge";
 
 export default function AppHeader({ onMenuClick }) {
-  const [session] = useSession();
+  // const [session] = useSession();
 
   const { value: isSponsorModalShown, set: setIsSponsorModalShown } = useToggle(
     false
   );
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16 max-w-7xl sm:px-2 lg:px-4">
-      <div className="md:hidden flex items-center">
+    <div className="relative z-10 flex flex-shrink-0 max-w-7xl h-16 sm:px-2 lg:px-4">
+      <div className="flex items-center md:hidden">
         <button
           onClick={onMenuClick}
-          className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          className="inline-flex items-center justify-center -ml-0.5 -mt-0.5 w-12 h-12 text-gray-500 hover:text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:ring-2 focus:ring-inset"
         >
           <span className="sr-only">Open sidebar</span>
-          <MenuIcon className="h-6 w-6" />
+          <MenuIcon className="w-6 h-6" />
         </button>
       </div>
-      <div className="flex-1 px-4 flex justify-between">
-        <div className="flex-1 flex"></div>
-        <div className="ml-4 flex items-center md:ml-6">
+      <div className="flex flex-1 justify-between px-4">
+        <div className="flex flex-1"></div>
+        <div className="flex items-center ml-4 md:ml-6">
           <button
             type="button"
             onClick={() => setIsSponsorModalShown(true)}
-            className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="p-1 text-gray-400 hover:text-gray-500 rounded-full focus:outline-none focus:ring-indigo-500 focus:ring-offset-2 focus:ring-2"
           >
             <span className="sr-only">Sponsor</span>
-            <HeartIcon className="h-5 w-5" />
+            <HeartIcon className="w-5 h-5" />
           </button>
           <Modal
             isOpen={isSponsorModalShown}
@@ -46,21 +45,21 @@ export default function AppHeader({ onMenuClick }) {
           >
             <div className="sm:flex sm:items-start">
               <div>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                <div className="flex items-center justify-center mx-auto w-12 h-12 bg-red-100 rounded-full">
                   <HeartIcon
-                    className="h-6 w-6 text-red-600"
+                    className="w-6 h-6 text-red-600"
                     aria-hidden="true"
                   />
                 </div>
                 <div className="mt-3 text-center sm:mt-5">
                   <h3
-                    className="text-lg leading-6 font-medium text-gray-900"
+                    className="text-gray-900 text-lg font-medium leading-6"
                     id="modal-headline"
                   >
                     Sponsor Ramble
                   </h3>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-gray-500 text-sm">
                       Please consider sponsoring my work! Sponsors get priority
                       support when fixing bugs or considering new features.
                     </p>
@@ -71,7 +70,7 @@ export default function AppHeader({ onMenuClick }) {
             <div className="mt-5 sm:mt-6">
               <ButtonExternalLink
                 href="https://github.com/sponsors/IanMitchell"
-                className="w-full justify-center"
+                className="justify-center w-full"
                 target="_blank"
                 highlight
               >
@@ -80,25 +79,25 @@ export default function AppHeader({ onMenuClick }) {
             </div>
           </Modal>
 
-          <FeedbackFish
+          {/* <FeedbackFish
             projectId="e98be972cfc300"
             userId={session?.user?.email}
           >
             <button
               type="button"
-              className="ml-3 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="ml-3 p-1 text-gray-400 hover:text-gray-500 rounded-full focus:outline-none focus:ring-indigo-500 focus:ring-offset-2 focus:ring-2"
             >
               <span className="sr-only">Sponsor</span>
-              <LightbulbIcon className="h-5 w-5" />
+              <LightbulbIcon className="w-5 h-5" />
             </button>
-          </FeedbackFish>
+          </FeedbackFish> */}
 
           <Menu>
             {({ open }) => (
-              <div className="ml-3 relative">
+              <div className="relative ml-3">
                 <div>
                   <Menu.Button
-                    className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-indigo-500 focus:ring-offset-2 focus:ring-2"
                     aria-haspopup="true"
                   >
                     <span className="sr-only">Open user menu</span>
@@ -118,11 +117,11 @@ export default function AppHeader({ onMenuClick }) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items static>
-                    <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
+                  {/* <Menu.Items static>
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg divide-gray-100 divide-y origin-top-right ring-black ring-opacity-5 ring-1">
                       <div className="px-4 py-3">
                         <p className="text-sm">Signed in as</p>
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-gray-900 text-sm font-medium truncate">
                           {session?.user?.email}
                         </p>
                       </div>
@@ -131,10 +130,10 @@ export default function AppHeader({ onMenuClick }) {
                         <Menu.Item as={Fragment}>
                           <a
                             href="#"
-                            className="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            className="group flex items-center px-4 py-2 text-gray-700 hover:text-gray-900 text-sm hover:bg-gray-100"
                             role="menuitem"
                           >
-                            <Badge className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" />
+                            <Badge className="mr-3 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
                             My Account
                           </a>
                         </Menu.Item>
@@ -143,7 +142,7 @@ export default function AppHeader({ onMenuClick }) {
                         <Menu.Item as={Fragment}>
                           <button
                             onClick={signOut}
-                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                            className="block px-4 py-2 w-full text-left text-gray-700 hover:text-gray-900 focus:text-gray-900 text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             role="menuitem"
                           >
                             Sign out
@@ -151,7 +150,7 @@ export default function AppHeader({ onMenuClick }) {
                         </Menu.Item>
                       </div>
                     </div>
-                  </Menu.Items>
+                  </Menu.Items> */}
                 </Transition>
               </div>
             )}
